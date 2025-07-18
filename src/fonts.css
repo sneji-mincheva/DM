@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'Saira';
+    src: url('src/lib/assets/fonts/Saira-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Saira';
+    src: url('src/lib/assets/fonts/Saira-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Saira';
+    src: url('src/lib/assets/fonts/Saira-Regular.ttf') format('truetype');
+    /*font-weight: 100;*/
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Saira';
+    src: url('src/lib/assets/fonts/Saira-SemiBold.ttf') format('truetype');
+    /*font-weight: 100;*/
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Saira';
+    src: url('src/lib/assets/fonts/Saira-Light.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}

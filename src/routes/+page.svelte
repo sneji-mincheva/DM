@@ -1,0 +1,107 @@
+<script lang="ts">
+    import logo from '$lib/assets/logo.svg'
+    import profile from '$lib/assets/profile.png'
+    import blob1 from '$lib/assets/blob1.svg'
+    import blob2 from '$lib/assets/blob2.svg'
+    import blob3 from '$lib/assets/blob3.svg'
+    import Button from "$lib/components/Button.svelte";
+    import media from '$lib/assets/media.svg'
+    import write from '$lib/assets/write.svg'
+    import learn from '$lib/assets/learn.svg'
+    import {onMount} from "svelte";
+
+
+
+    onMount(() =>{
+        let pos =  $state(window.scrollY)
+        $effect(()=>{
+            pos = window.scrollY
+            if(pos > 50) {
+                const navbar: HTMLElement = document.querySelector('nav') as HTMLElement
+                const links: HTMLDivElement = document.querySelector("#links") as HTMLDivElement
+                links.classList.add("text-(--text)")
+                navbar.classList.add("glass")
+            }
+        })
+        const navbar: HTMLElement = document.querySelector('nav') as HTMLElement
+        const links: HTMLDivElement = document.querySelector("#links") as HTMLDivElement
+        if(window.screenY > 50) {
+            links.classList.add("text-(--text)")
+            navbar.classList.add("glass")
+        }
+        window.addEventListener("scroll", () => {
+            if(window.scrollY > 50){
+                links.classList.add("text-(--text)")
+                navbar.classList.add("glass")
+            }
+
+            else {
+                links.classList.remove("text-(--text)")
+                navbar.classList.remove("glass")
+            }
+        })
+        window.addEventListener("scrollend", () => {
+            if(window.scrollY < 50) navbar.classList.remove("glass")
+        }
+        )
+    })
+</script>
+<nav class="w-screen h-20 flex items-center fixed z-20">
+    <ul class="flex justify-evenly items-center w-screen gap-50">
+        <li class="flex mt-1">
+            <img src="{logo}" alt="logo" class="w-24 h-12">
+        </li>
+        <li>
+            <div id="links" class="flex gap-20 justify-center mr-10 text-saira text-(--bg) text-2xl z-50 select-none">
+                <p class="z-10">Product</p>
+                <p class="z-10">About</p>
+                <p class="z-10">Help</p>
+            </div>
+        </li>
+        <li>
+            <img src="{profile}" alt='profile' class="w-12 h-12">
+        </li>
+    </ul>
+</nav>
+
+<main class="flex flex-col gap-5 items-center justify-center h-screen z-30 overflow-x-hidden">
+    <h1 class="text-saira font-bold text-(--text) text-[2.5rem] text-center">All-in-One Support for<br>the Modern Designer</h1>
+    <p class="text-saira text-(--text) text-center mb-16">DesignMate AI supercharges your creative process with smart tools for visuals, copy, and<br> design learning — all in one place. Create faster, design smarter.</p>
+    <Button>Start your journey</Button>
+    <img src="{blob1}" alt="decoration" class="w-60 absolute left-[-1rem] bottom-[-.7rem] z-10 blob">
+    <img src="{blob2}" alt="decoration" class="w-[30rem] absolute left-[calc(50%-15rem)] top-[-1rem] blob z-10">
+    <img src="{blob3}" alt="decoration" class="w-60 absolute right-0 bottom-[-.7rem] blob z-10">
+</main>
+
+<section class="gap-7 flex flex-col h-screen z-50 text-center justify-center items-center">
+    <div class="w-[50rem] bg-cyan-50 h-90">
+
+    </div>
+    <p class="text-md font-medium text-saira text-(--text)" >DesignMate AI supercharges your creative process with smart tools for visuals, copy, and <br> design learning — all in one place. Create faster, design smarter.</p>
+</section>
+<section class="h-[49vh] flex justify-baseline items-center flex-col gap-16">
+    <p class="text-saira font-light text-center text-2xl">Product</p>
+    <div class="flex gap-32">
+        <div class="flex flex-col gap-2">
+            <img src="{media}" alt="decoration" class="h-15" >
+            <p class="text-saira font-normal text-center text-xl">Generates media</p>
+        </div>
+        <div class="h-25 w-[.3rem] rounded-2xl bg-gradient-to-b from-(--text) to-(--lighter)"></div>
+        <div class="flex flex-col gap-2">
+            <img src="{write}" alt="decoration" class="h-15" >
+            <p class="text-saira font-normal text-center text-xl">Copywrites</p>
+        </div>
+        <div class="h-25 w-[.3rem] rounded-2xl bg-gradient-to-b from-(--text) to-(--lighter)"></div>
+        <div class="flex flex-col gap-2">
+            <img src="{learn}" alt="decoration" class="h-15">
+            <p class="text-saira font-normal text-center text-xl">Helps you learn</p>
+        </div>
+    </div>
+</section>
+<section class="h-screen flex items-center justify-baseline flex-col gap-24">
+    <p class="text-saira font-light text-center text-2xl gap-0.5">About</p>
+    <div class="flex items-center gap-30">
+        <p class="text-saira font-normal text-xl text-(--text) leading-6">An AI-powered platform for generating<br> images, videos, and copywriting. Learn<br> design theory and grow your skills. Made<br> to help designers create more effectively.</p>
+        <div class="w-[30rem] h-64 bg-cyan-50"></div>
+    </div>
+</section>
