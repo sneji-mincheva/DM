@@ -1,0 +1,37 @@
+Index: src/lib/components/Input.svelte
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/lib/components/Input.svelte b/src/lib/components/Input.svelte
+new file mode 100644
+--- /dev/null	(date 1753035421373)
++++ b/src/lib/components/Input.svelte	(date 1753035421373)
+@@ -0,0 +1,10 @@
++<script lang="ts">
++    type Props = {
++        inputType: 'number' | 'text' | 'password' | 'email' | 'tel' | 'url' | 'date' | 'time' | 'datetime-local' | 'month' | 'week' | 'color' | 'range' | 'checkbox' | 'radio' | 'file' | 'submit' | 'reset' | 'image' | 'button' | 'hidden',
++    }
++
++    let {inputType }: Props = $props();
++</script>
++
++
++<input type="{inputType}" >
+Index: src/routes/signin/+page.svelte
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/routes/signin/+page.svelte b/src/routes/signin/+page.svelte
+new file mode 100644
+--- /dev/null	(date 1753035421398)
++++ b/src/routes/signin/+page.svelte	(date 1753035421398)
+@@ -0,0 +1,6 @@
++<script>
++    import Input from "$lib/components/Input.svelte";
++</script>
++
++
++<Input inputType="email"></Input>
+\ No newline at end of file
