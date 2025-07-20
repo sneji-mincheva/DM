@@ -1,5 +1,6 @@
 <script lang="ts">
     import logo from '$lib/assets/logo.svg'
+    import logow from '$lib/assets/logow.svg'
     import profile from '$lib/assets/profile.png'
     import blob1 from '$lib/assets/blob1.svg'
     import blob2 from '$lib/assets/blob2.svg'
@@ -98,10 +99,37 @@
         </div>
     </div>
 </section>
-<section class="h-screen flex items-center justify-baseline flex-col gap-24">
-    <p class="text-saira font-light text-center text-2xl gap-0.5">About</p>
-    <div class="flex items-center gap-30">
-        <p class="text-saira font-normal text-xl text-(--text) leading-6">An AI-powered platform for generating<br> images, videos, and copywriting. Learn<br> design theory and grow your skills. Made<br> to help designers create more effectively.</p>
+<section class="h-50 flex items-center justify-baseline flex-col gap-20">
+    <p class="text-saira font-light text-center text-2xl gap-2">About</p>
+    <div class="flex items-center gap-20">
+        <p class="text-saira font-normal text-xl text-(--text) leading-6 text-center">An AI-powered platform for generating<br> images, videos, and copywriting. Learn<br> design theory and grow your skills. Made<br> to help designers create more effectively.</p>
         <div class="w-[30rem] h-64 bg-cyan-50"></div>
     </div>
 </section>
+<section class="h-[45vw] flex flex-col justify-center items-center gap-10 mt-10">
+    <p class="text-saira font-light text-center text-2xl gap-5">Help</p>
+    <p class="text-saira font-medium text-2xl text-(--text) text-center mb-6">Get help from our chatbot or text us at our official<br> social media pages.</p>
+    <img src ="{blob1}" class="h-80 absolute left-[-1rem] bottom-[-282vh] blob">
+    <img src ="{blob3}" class="h-60 absolute right-0 bottom-[-282vh] blob">
+    <Button>Start chat</Button>
+</section>
+<footer class="flex items-center justify-center w-full h-80 bg-(--footer) flex-col">
+    <div class="flex justify-between w-[99vw] px-5">
+        <p class="text-(--footerT) text-saira text-2xl font-bold">Contact us</p>
+        <p class="text-(--footerT) text-saira text-2xl font-bold">Navigation</p>
+    </div>
+    <div class="flex justify-between w-[99vw] px-5">
+        <div class="flex flex-col gap-2 mt-16">
+            <a class="text-(--footerT) text-saira font-medium text-2xl text-left">Facebook</a>
+            <a class="text-(--footerT) text-saira font-medium text-2xl text-left">Instagram</a>
+            <a class="text-(--footerT) text-saira font-medium text-2xl text-left">Email</a>
+        </div>
+        <img src="{logow}" class="w-40 h-40 justify-center">
+        <div class="flex flex-col mt-5 gap-2 mt-16">
+            <a class="text-(--footerT) text-saira font-medium text-2xl text-right">Product</a>
+            <a class="text-(--footerT) text-saira font-medium text-2xl text-right">About</a>
+            <a class="text-(--footerT) text-saira font-medium text-2xl text-right">Help</a>
+        </div>
+    </div>
+    <p class="text-(--footerT) text-saira text-xl font-light relative bottom-[-2rem]">Privacy Policy | Terms of Use</p>
+</footer>
