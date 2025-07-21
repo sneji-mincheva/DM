@@ -5,13 +5,17 @@
  import blob3 from '$lib/assets/blob3.svg';
  import logo from '$lib/assets/logo.svg';
  import google from '$lib/assets/google.svg';
+ import { onMount } from 'svelte';
 
+  onMount(() => {
+   document.querySelector('#logo')?.addEventListener('click', () => {window.location.href = '/'})
+ })
  </script>
 
  <nav class="w-screen h-20 flex items-center fixed z-20">
     <ul class="flex justify-start items-center w-screen gap-50 p-10">
         <li class="flex mt-1">
-            <img src="{logo}" alt="logo" class="w-24 h-12">
+            <img src="{logo}" alt="logo" class="w-24 h-12 cursor-pointer" id="logo">
         </li>
     </ul>
 </nav>
