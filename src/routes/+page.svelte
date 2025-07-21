@@ -14,6 +14,9 @@
 
 
     onMount(() =>{
+        const profile = document.querySelector('#profile') as HTMLElement
+        profile.addEventListener('click', () => {window.location.href = '/login'})
+
         let pos =  $state(window.scrollY)
         $effect(()=>{
             pos = window.scrollY
@@ -60,7 +63,7 @@
             </div>
         </li>
         <li>
-            <img src="{profile}" alt='profile' class="w-12 h-12">
+            <img src="{profile}" alt='profile' class="w-12 h-12" id="profile">
         </li>
     </ul>
 </nav>
@@ -109,8 +112,8 @@
 <section class="h-[45vw] flex flex-col justify-center items-center gap-10 mt-10">
     <p class="text-saira font-light text-center text-2xl gap-5">Help</p>
     <p class="text-saira font-medium text-2xl text-(--text) text-center mb-6">Get help from our chatbot or text us at our official<br> social media pages.</p>
-    <img src ="{blob1}" class="h-80 absolute left-[-1rem] bottom-[-282vh] blob">
-    <img src ="{blob3}" class="h-60 absolute right-0 bottom-[-282vh] blob">
+    <img src ="{blob1}" class="h-80 absolute left-[-1rem] bottom-[-266vh] blob" alt="blob">
+    <img src ="{blob3}" class="h-60 absolute right-0 bottom-[-266vh] blob" alt="blob">
     <Button>Start chat</Button>
 </section>
 <footer class="flex items-center justify-center w-full h-80 bg-(--footer) flex-col">
@@ -124,8 +127,8 @@
             <a class="text-(--footerT) text-saira font-medium text-2xl text-left">Instagram</a>
             <a class="text-(--footerT) text-saira font-medium text-2xl text-left">Email</a>
         </div>
-        <img src="{logow}" class="w-40 h-40 justify-center">
-        <div class="flex flex-col mt-5 gap-2 mt-16">
+        <img src="{logow}" class="w-40 h-40 justify-center" alt="logo-white">
+        <div class="flex flex-col gap-2 mt-16">
             <a class="text-(--footerT) text-saira font-medium text-2xl text-right">Product</a>
             <a class="text-(--footerT) text-saira font-medium text-2xl text-right">About</a>
             <a class="text-(--footerT) text-saira font-medium text-2xl text-right">Help</a>

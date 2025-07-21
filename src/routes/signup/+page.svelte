@@ -17,16 +17,18 @@
 </nav>
 
  <main class="flex flex-col gap-4 items-center justify-center h-screen z-30 overflow-x-hidden">
-   <p class="text-saira text-(--text) text-3xl mb-16">Welcome back</p>
+   <p class="text-saira text-(--text) text-3xl mb-16">Welcome</p>
+   <Input type="string" label="Full name" />
    <Input type="email" label="Email" />
    <Input type="password" label="Password" />
+   <Input type="password" label="Confirm password" />
     <div class="flex flex-col justify-center items-center gap-2 mb-10">
       <p class="text-saira font-light text-(--text)">or use</p>
       <img src="{google}" alt="google" class="w-10">
     </div>
-   <Button>Log in</Button>
+   <Button>Sign up</Button>
 
    <img src="{blob1}" alt="decoration" class="w-60 absolute left-[-1rem] bottom-[-.7rem] z-10 blob">
    <img src="{blob3}" alt="decoration" class="w-60 absolute right-0 bottom-[-.7rem] blob z-10">
-   <a href="/register" class="absolute bottom-10 right-10 z-20"><p class="text-saira font-light text-(--bg)">No account? <b>Sign up</b></p></a>
+   <a href="/register" class="absolute bottom-10 right-10 z-20"><p class="text-saira font-light text-(--bg)">Have an account? <b>Log in</b></p></a>
  </main>
