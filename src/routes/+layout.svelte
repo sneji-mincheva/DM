@@ -12,6 +12,7 @@
         --lighter: #4F5165;
         --footer: #474044;
         --footerT: #F1E9DA;
+        --login: rgba(41, 49, 50, 0.4);
     }
 
     :global(body) {
