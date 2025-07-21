@@ -1,0 +1,59 @@
+Index: src/routes/+layout.svelte
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><script lang=\"ts\">\r\n\timport '../app.css';\r\n    import '../fonts.css'\r\n\r\n\tlet { children } = $props();\r\n</script>\r\n\r\n<style>\r\n    :root{\r\n        --bg: #F1E9DA;\r\n        --text: #293132;\r\n        --lighter: #4F5165;\r\n        --footer: #474044;\r\n        --footerT: #F1E9DA;\r\n    }\r\n\r\n    :global(body) {\r\n        margin: 0;\r\n        background: #F1E9DA;\r\n        user-select: none;\r\n    }\r\n</style>\r\n\r\n{@render children()}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/routes/+layout.svelte b/src/routes/+layout.svelte
+--- a/src/routes/+layout.svelte	(revision 2175b306eef34529623c4ca0429fbc42670600cc)
++++ b/src/routes/+layout.svelte	(date 1753095011180)
+@@ -12,6 +12,7 @@
+         --lighter: #4F5165;
+         --footer: #474044;
+         --footerT: #F1E9DA;
++        --login: rgba(41, 49, 50, 0.4);
+     }
+ 
+     :global(body) {
+Index: src/lib/components/ButtonL.svelte
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/lib/components/ButtonL.svelte b/src/lib/components/ButtonL.svelte
+new file mode 100644
+--- /dev/null	(date 1753094919670)
++++ b/src/lib/components/ButtonL.svelte	(date 1753094919670)
+@@ -0,0 +1,8 @@
++<script lang="ts">
++    let { children } = $props();
++</script>
++
++
++<button class="bg-(--login) text-(--bg) opacity-0.4 w-120 h-8 rounded-md flex text-xl pb-1.5 items-center justify-center text-center font-bold">
++    {@render children?.()}
++</button>
+\ No newline at end of file
+Index: src/routes/login/+page.svelte
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/routes/login/+page.svelte b/src/routes/login/+page.svelte
+new file mode 100644
+--- /dev/null	(date 1753094872930)
++++ b/src/routes/login/+page.svelte	(date 1753094872930)
+@@ -0,0 +1,11 @@
++ <script lang="ts">
++
++ import ButtonL from "$lib/components/ButtonL.svelte";
++ import Button from "$lib/components/Button.svelte";
++
++ </script>
++ <main class="flex flex-col gap-5 items-center justify-center h-screen z-30 overflow-x-hidden">
++<p class="text-saira text-(--text) text-3xl">Welcome back</p>
++     <ButtonL>Test</ButtonL>
++     <Button>Log in</Button>
++ </main>
+\ No newline at end of file
