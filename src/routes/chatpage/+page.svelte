@@ -5,6 +5,18 @@
 	import learn from '$lib/assets/learn.svg';
 	import send from '$lib/assets/send.svg';
 	import profile from '$lib/assets/profile.png'
+	import { onMount } from 'svelte';
+
+	let visible = $state(false);
+
+	function toggle() {
+		visible = !visible;
+	}
+
+	onMount(() => {
+		const profilebtn = document.querySelector('#profile') as HTMLImageElement;
+		profilebtn.addEventListener('click', toggle);
+	})
 </script>
 
 
@@ -32,7 +44,12 @@
 </nav>
 
 <main class="w-[calc(100vw-14rem)] h-screen fixed right-0 flex justify-center">
-	<img src="{profile}" alt="profile" class="w-10 fixed right-10 top-12 cursor-pointer">
+	<img src="{profile}" alt="profile" class="w-10 fixed right-10 top-12 cursor-pointer" id="profile">
+	{#if visible}
+		<form action="?/logout" method="post">
+			<button type="submit" class="cursor-pointer w-20 h-8 bg-(--text) text-(--bg) rounded-md fixed right-10 top-24 active: outline-0">Logout</button>
+		</form>
+	{/if}
 	<h1 class="text-saira text-3xl fixed text-(--text) mt-10">Welcome</h1>
 	<div class="flex h-10">
 		<input placeholder="Ask something" type="text" class="w-[40rem] h-10 glassinput chatinput relative bottom-[-89vh] rounded-md active: outline-0 px-4 text-saira">

@@ -10,6 +10,10 @@
   onMount(() => {
    document.querySelector('#logo')?.addEventListener('click', () => {window.location.href = '/'})
  })
+
+ function googlelogin() {
+   fetch('?/google',{method: 'POST', headers: { 'x-sveltekit-action': true }, body: new FormData("")})
+ }
  </script>
 
  <nav class="w-screen h-20 flex items-center fixed z-20">
@@ -21,14 +25,18 @@
 </nav>
 
  <main class="flex flex-col gap-4 items-center justify-center h-screen z-30 overflow-x-hidden">
-   <p class="text-saira text-(--text) text-3xl mb-16">Welcome back</p>
-   <Input type="email" label="Email" />
-   <Input type="password" label="Password" />
-    <div class="flex flex-col justify-center items-center gap-2 mb-10">
-      <p class="text-saira font-light text-(--text)">or use</p>
-      <img src="{google}" alt="google" class="w-10">
-    </div>
-   <Button>Log in</Button>
+   <form method="post" action="?/login" class="flex flex-col gap-4 items-center justify-center h-screen z-30 overflow-x-hidden">
+     <p class="text-saira text-(--text) text-3xl mb-16">Welcome back</p>
+     <Input type="email" label="Email" name="email" required/>
+     <Input type="password" label="Password" name="password" required/>
+      <div class="flex flex-col justify-center items-center gap-2 mb-10">
+        <p class="text-saira font-light text-(--text)">or use</p>
+        <button class="cursor-pointer" onclick="{googlelogin}" type="button">
+          <img src="{google}" alt="google" class="w-10">
+        </button>
+      </div>
+     <Button type="submit">Log in</Button>
+  </form>
 
    <img src="{blob1}" alt="decoration" class="w-60 absolute left-[-1rem] bottom-[-.7rem] z-10 blob">
    <img src="{blob3}" alt="decoration" class="w-60 absolute right-0 bottom-[-.7rem] blob z-10">

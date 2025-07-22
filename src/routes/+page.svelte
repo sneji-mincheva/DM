@@ -10,6 +10,7 @@
     import write from '$lib/assets/write.svg'
     import learn from '$lib/assets/learn.svg'
     import {onMount} from "svelte";
+    import about from '$lib/assets/about.svg'
 
     function scrollToTarget(headerOffset: number, element: HTMLElement){
         const elementPosition = element.getBoundingClientRect().top;
@@ -145,15 +146,14 @@
     <p class="text-saira font-light text-center text-2xl gap-2">About</p>
     <div class="flex items-center gap-20">
         <p class="text-saira font-normal text-xl text-(--text) leading-6 text-center">An AI-powered platform for generating<br> images, videos, and copywriting. Learn<br> design theory and grow your skills. Made<br> to help designers create more effectively.</p>
-        <div class="w-[30rem] h-64 bg-cyan-50"></div>
+        <img src="{about}" class="w-[30rem] h-64" alt="about">
     </div>
 </section>
 <section class="h-[45vw] flex flex-col justify-center items-center gap-10 mt-10" id="help">
     <p class="text-saira font-light text-center text-2xl gap-5">Help</p>
-    <p class="text-saira font-medium text-2xl text-(--text) text-center mb-6">Get help from our chatbot or text us at our official<br> social media pages.</p>
+    <p class="text-saira font-medium text-2xl text-(--text) text-center mb-6">Text us at our official<br> social media pages.</p>
     <img src ="{blob1}" class="h-80 absolute left-[-1rem] bottom-[-266vh] blob" alt="blob">
     <img src ="{blob3}" class="h-60 absolute right-0 bottom-[-266vh] blob" alt="blob">
-    <Button onclick={() => {window.location.href = '/chatpage'}}>Start chat</Button>
 </section>
 <footer class="flex items-center justify-center w-full h-80 bg-(--footer) flex-col">
     <div class="flex justify-between w-[99vw] px-5">
