@@ -5,12 +5,22 @@
 	import learn from '$lib/assets/learn.svg';
 	import send from '$lib/assets/send.svg';
 	import profile from '$lib/assets/profile.png'
+	import image from '$lib/assets/image.png'
 	import { onMount } from 'svelte';
 
 	let visible = $state(false);
 
 	function toggle() {
 		visible = !visible;
+	}
+
+	let response = $state(	);
+
+	async function send_prompt() {
+		const prompt = (document.querySelector('#prompt') as HTMLInputElement).value;
+		(document.querySelector("#prompt") as HTMLInputElement).value = '';
+
+		return puter.ai.chat(prompt, { model: "gpt-4o-mini" })
 	}
 
 	onMount(() => {
@@ -43,7 +53,19 @@
 	</ul>
 </nav>
 
-<main class="w-[calc(100vw-14rem)] h-screen fixed right-0 flex justify-center">
+<section class="absolute w-[calc(100vw-14rem)] mt-30 min-h-screen h-[200vw] overflow-scroll right-0">
+	{#if response}
+		{#await response}
+			<p>Loading...</p>
+		{:then res}
+				<p>{res.toString()}</p>
+		{:catch error}
+			<p>{error}</p>
+		{/await}
+	{/if}
+</section>
+
+<main class="w-[calc(100vw-14rem)] h-screen fixed flex justify-center right-0">
 	<img src="{profile}" alt="profile" class="w-10 fixed right-10 top-12 cursor-pointer" id="profile">
 	{#if visible}
 		<form action="?/logout" method="post">
@@ -51,8 +73,14 @@
 		</form>
 	{/if}
 	<h1 class="text-saira text-3xl fixed text-(--text) mt-10">Welcome</h1>
-	<div class="flex h-10">
-		<input placeholder="Ask something" type="text" class="w-[40rem] h-10 glassinput chatinput relative bottom-[-89vh] rounded-md active: outline-0 px-4 text-saira">
-		<img src="{send}" alt="send" class="w-6 relative bottom-[-89vh] right-10 cursor-pointer">
+	<div class="flex h-10 z-40">
+		<input id="prompt" placeholder="Ask something" type="text" class="w-[40rem] h-10 glassinput chatinput relative bottom-[-89vh] rounded-md active: outline-0 px-10 text-saira z-40">
+		<button onclick="{() => {}}">
+			<img src="{image}" alt="send" class="w-6 relative bottom-[-89vh] right-10 cursor-pointer z-40">
+		</button>
+		<button onclick="{() => {response = send_prompt()}}">
+			<img src="{send}" alt="send" class="w-6 relative bottom-[-89vh] right-10 cursor-pointer z-40 opacity-40">
+		</button>
 	</div>
 </main>
+

@@ -36,6 +36,7 @@
 	},
 	"dependencies": {
 		"@supabase/ssr": "^0.6.1",
-		"@supabase/supabase-js": "^2.52.0"
+		"@supabase/supabase-js": "^2.52.0",
+		"puter": "^1.0.0"
 	}
 }
