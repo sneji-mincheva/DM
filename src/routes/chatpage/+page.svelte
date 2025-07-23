@@ -14,18 +14,49 @@
 		visible = !visible;
 	}
 
+	let isImage: boolean = $state(false);
+
+	function toggle_opacity() {
+		const image = (document.querySelector("#img") as HTMLImageElement)
+		if(image.classList.contains('opacity-80')){
+			image.classList.remove('opacity-80')
+			isImage = false
+		}
+		else{
+			image.classList.add('opacity-80')
+			isImage = true
+		}
+	}
+
 	let response = $state(	);
 
 	async function send_prompt() {
 		const prompt = (document.querySelector('#prompt') as HTMLInputElement).value;
 		(document.querySelector("#prompt") as HTMLInputElement).value = '';
+		if(!isImage) return puter.ai.chat(prompt, { model: "gpt-4o-mini" });
+		else return puter.ai.txt2img(prompt);
+	}
 
-		return puter.ai.chat(prompt, { model: "gpt-4o-mini" })
+	function addResText(res: string, left?: boolean) {
+		const chat = document.querySelector('#chat') as HTMLElement;
+		const text = document.createElement('p');
+		text.innerText = res;
+		text.className = 'text-saira text-(--bg) text-lg mb-16 bg-(--text) rounded-md p-4 max-w-96 text-wrap';
+		if(left) text.classList.add('ml-[60vw]');
+		chat.appendChild(text);
 	}
 
 	onMount(() => {
 		const profilebtn = document.querySelector('#profile') as HTMLImageElement;
 		profilebtn.addEventListener('click', toggle);
+
+		const submit = document.querySelector('#prompt') as HTMLInputElement;
+		submit.addEventListener('keypress', (e) => {
+			if(e.key === 'Enter'){
+				addResText(submit.value, true);
+				(document.querySelector("#submitbtn") as HTMLButtonElement).click();
+			}
+		})
 	})
 </script>
 
@@ -53,12 +84,16 @@
 	</ul>
 </nav>
 
-<section class="absolute w-[calc(100vw-14rem)] mt-30 min-h-screen h-[200vw] overflow-scroll right-0">
+<section id="chat" class="absolute w-[calc(100vw-14rem)] mt-30 min-h-screen h-screen overflow-scroll right-0 flex flex-col items-start pl-20">
 	{#if response}
 		{#await response}
-			<p>Loading...</p>
+			<p class="text-saira text-(--text) text-lg mb-16">Loading...</p>
 		{:then res}
-				<p>{res.toString()}</p>
+			{#if !isImage}
+				{addResText(res.toString())}
+				{:else}
+				<img src={res} alt="img" class="w-64 rounded-md">
+			{/if}
 		{:catch error}
 			<p>{error}</p>
 		{/await}
@@ -74,13 +109,12 @@
 	{/if}
 	<h1 class="text-saira text-3xl fixed text-(--text) mt-10">Welcome</h1>
 	<div class="flex h-10 z-40">
-		<input id="prompt" placeholder="Ask something" type="text" class="w-[40rem] h-10 glassinput chatinput relative bottom-[-89vh] rounded-md active: outline-0 px-10 text-saira z-40">
-		<button onclick="{() => {}}">
-			<img src="{image}" alt="send" class="w-6 relative bottom-[-89vh] right-10 cursor-pointer z-40">
+		<input id="prompt" placeholder="Ask something" type="text" class="w-[40rem] h-10 glassinput chatinput relative bottom-[-89vh] rounded-md active: outline-0 pr-24 pl-6 text-saira z-40">
+		<button onclick={toggle_opacity}>
+			<img src="{image}" alt="imgSelect" class="w-6 relative bottom-[-89vh] right-20 cursor-pointer z-40 opacity-40" id="img">
 		</button>
-		<button onclick="{() => {response = send_prompt()}}">
-			<img src="{send}" alt="send" class="w-6 relative bottom-[-89vh] right-10 cursor-pointer z-40 opacity-40">
+		<button onclick="{() => {response = send_prompt()}}" id="submitbtn">
+			<img src="{send}" alt="send" class="w-6 relative bottom-[-89vh] right-16 cursor-pointer z-40 opacity-40">
 		</button>
 	</div>
 </main>
-
